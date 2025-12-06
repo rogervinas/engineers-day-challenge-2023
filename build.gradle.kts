@@ -1,5 +1,5 @@
 plugins {
-  id("org.jetbrains.kotlin.jvm") version "1.8.10"
+  kotlin("jvm") version "2.2.21"
   application
 }
 
@@ -13,6 +13,18 @@ dependencies {
   testImplementation("org.junit.jupiter:junit-jupiter-params")
 
   testImplementation("org.assertj:assertj-core:3.24.2")
+}
+
+java {
+  toolchain {
+    languageVersion = JavaLanguageVersion.of(21)
+  }
+}
+
+kotlin {
+  compilerOptions {
+    freeCompilerArgs.addAll("-Xjsr305=strict")
+  }
 }
 
 application {
